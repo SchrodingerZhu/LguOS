@@ -10,9 +10,10 @@ echo '    \|_______| \|_______| \|_______|        \|_______||\_________\'
 echo '                                                      \|_________|'
 
 echo "mounting basic system"
-mkdir -p /sys /proc
+mkdir -p /sys /proc /mnt
 mount -t sysfs none /sys
 mount -t proc none /proc
+mount -t 9p -o trans=virtio host0 /mnt -oversion=9p2000.L,msize=20M
 
 /bin/sh
 
